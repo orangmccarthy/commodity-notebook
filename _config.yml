@@ -1,0 +1,39 @@
+# ---------------------------------------------------------------
+# Site settings — change these to your own details
+# ---------------------------------------------------------------
+title: "Commodities & Geopolitics Notebook"
+author: "Your Name"
+description: >-
+  A weekly, timestamped record of my views on commodity markets and the
+  geopolitics that move them — with a paper-traded book to keep me honest.
+  Educational only, not investment advice.
+
+# Your domain goes here once it's connected (leave blank until then)
+url: ""
+baseurl: "/commodity-notebook"   # set back to "" once your own domain is connected
+
+# Optional: your LinkedIn username (the bit after linkedin.com/in/)
+linkedin_username: ""
+
+# ---------------------------------------------------------------
+# Theme and build settings (no need to change)
+# ---------------------------------------------------------------
+theme: minima
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+timezone: Europe/Dublin
+
+# Order of links in the top menu
+header_pages:
+  - dashboard.md
+  - trades.md
+  - about.md
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - scripts/
+  - requirements.txt
+  - README.md
