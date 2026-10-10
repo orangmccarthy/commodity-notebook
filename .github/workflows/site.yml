@@ -1,0 +1,66 @@
+# Updates the market data every Monday, then builds and publishes the site.
+# Also republishes whenever you push a change (e.g. a new weekly post).
+name: Update data and publish site
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"   # Mondays 07:00 UTC (08:00 Dublin in summer, 07:00 in winter)
+  push:
+    branches: [main]
+  workflow_dispatch:       # adds a "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write   # to save the updated data back to the repo
+  pages: write      # to publish the site
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  update-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        if: github.event_name != 'push'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Update market data and charts
+        if: github.event_name != 'push'
+        run: |
+          pip install -r requirements.txt
+          python scripts/update_data.py
+
+      - name: Save updated data to the repo
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/markets.json assets/charts
+          git diff --cached --quiet || git commit -m "Weekly data update"
+          git push
+
+      - uses: actions/configure-pages@v5
+
+      - name: Build site
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: update-and-build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
