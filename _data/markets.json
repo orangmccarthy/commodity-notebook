@@ -1,49 +1,49 @@
 {
-  "updated": "26 Oct 2026",
+  "updated": "02 Nov 2026",
   "markets": [
     {
       "name": "Brent crude",
       "ticker": "BZ=F",
       "unit": "$/bbl",
       "slug": "brent",
-      "last": 110.24,
-      "as_of": "26 Oct 2026",
-      "chg_1w": 0.6,
-      "chg_1m": 5.7,
-      "chg_1y": 68.0
+      "last": 109.89,
+      "as_of": "02 Nov 2026",
+      "chg_1w": -5.1,
+      "chg_1m": 7.5,
+      "chg_1y": 69.3
     },
     {
       "name": "WTI crude",
       "ticker": "CL=F",
       "unit": "$/bbl",
       "slug": "wti",
-      "last": 101.49,
-      "as_of": "26 Oct 2026",
-      "chg_1w": -2.1,
-      "chg_1m": 9.8,
-      "chg_1y": 65.5
+      "last": 100.41,
+      "as_of": "02 Nov 2026",
+      "chg_1w": -1.3,
+      "chg_1m": 10.2,
+      "chg_1y": 64.5
     },
     {
       "name": "US natural gas (Henry Hub)",
       "ticker": "NG=F",
       "unit": "$/MMBtu",
       "slug": "henry-hub",
-      "last": 3.0,
-      "as_of": "26 Oct 2026",
-      "chg_1w": -2.0,
-      "chg_1m": -6.2,
-      "chg_1y": -12.9
+      "last": 2.89,
+      "as_of": "02 Nov 2026",
+      "chg_1w": 11.2,
+      "chg_1m": -4.7,
+      "chg_1y": -32.2
     },
     {
       "name": "Wheat (CBOT)",
       "ticker": "ZW=F",
       "unit": "US\u00a2/bu",
       "slug": "wheat",
-      "last": 624.0,
-      "as_of": "26 Oct 2026",
-      "chg_1w": -4.8,
-      "chg_1m": -11.3,
-      "chg_1y": 18.6
+      "last": 602.0,
+      "as_of": "02 Nov 2026",
+      "chg_1w": -2.3,
+      "chg_1m": -11.9,
+      "chg_1y": 10.8
     }
   ]
 }
